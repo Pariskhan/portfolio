@@ -1,0 +1,700 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MD Mojammel Khan Paris — Architecture</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;1,6..96,400;1,6..96,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --black:#0A0A09;
+    --panel:#131210;
+    --panel-2:#1B1916;
+    --ivory:#EDE8DE;
+    --stone:#948E80;
+    --bronze:#BE9A65;
+    --bronze-dim:#7C6944;
+    --line:rgba(237,232,222,0.14);
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--black);
+    color:var(--ivory);
+    font-family:'Inter',sans-serif;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  ::selection{background:var(--bronze);color:var(--black);}
+  a{color:inherit;text-decoration:none;}
+  img,svg{display:block;max-width:100%;}
+
+  .wrap{max-width:1320px;margin:0 auto;padding:0 clamp(22px,4vw,64px);}
+  .serif{font-family:'Bodoni Moda',serif;}
+  .eyebrow{
+    font-size:0.68rem;
+    letter-spacing:0.18em;
+    text-transform:uppercase;
+    color:var(--bronze);
+    font-weight:500;
+  }
+
+  /* ============ NAV ============ */
+  header{
+    position:fixed;
+    top:0;left:0;right:0;
+    z-index:100;
+    padding:22px 0;
+    transition:background .4s, padding .4s, border-color .4s;
+    border-bottom:1px solid transparent;
+  }
+  header.solid{
+    background:rgba(10,10,9,0.86);
+    backdrop-filter:blur(10px);
+    padding:16px 0;
+    border-color:var(--line);
+  }
+  .navrow{
+    max-width:1320px;margin:0 auto;
+    padding:0 clamp(22px,4vw,64px);
+    display:flex;align-items:center;justify-content:space-between;
+  }
+  .logo{
+    font-family:'Bodoni Moda',serif;
+    font-size:1.05rem;
+    letter-spacing:0.03em;
+  }
+  .navlinks{display:flex;gap:34px;}
+  .navlinks a{
+    font-size:0.72rem;
+    letter-spacing:0.1em;
+    text-transform:uppercase;
+    color:var(--stone);
+    transition:color .2s;
+    position:relative;
+  }
+  .navlinks a:hover{color:var(--ivory);}
+  @media (max-width:760px){ .navlinks{display:none;} }
+
+  /* ============ HERO ============ */
+  .hero{
+    position:relative;
+    height:100svh;
+    min-height:640px;
+    display:flex;
+    flex-direction:column;
+    justify-content:flex-end;
+    overflow:hidden;
+  }
+  .hero-bg{
+    position:absolute;inset:0;
+    background:
+      radial-gradient(ellipse at 78% 18%, rgba(190,154,101,0.16), transparent 45%),
+      linear-gradient(180deg, #0D0C0B 0%, #131210 42%, #0A0A09 100%);
+  }
+  .hero-bg svg{position:absolute;bottom:0;left:0;width:100%;height:auto;}
+  .hero-vignette{
+    position:absolute;inset:0;
+    background:linear-gradient(180deg, rgba(10,10,9,0.15) 0%, rgba(10,10,9,0) 30%, rgba(10,10,9,0.85) 100%);
+  }
+  .hero-tag-top{
+    position:absolute;
+    top:110px;
+    left:clamp(22px,4vw,64px);
+    z-index:3;
+    font-size:0.7rem;
+    letter-spacing:0.08em;
+    color:var(--stone);
+    line-height:1.7;
+  }
+  .hero-tag-top strong{
+    display:block;
+    font-family:'Bodoni Moda',serif;
+    font-size:1.1rem;
+    color:var(--ivory);
+    font-weight:500;
+  }
+  .hero-tag-right{
+    position:absolute;
+    top:110px;
+    right:clamp(22px,4vw,64px);
+    z-index:3;
+    text-align:right;
+    font-size:0.7rem;
+    letter-spacing:0.08em;
+    color:var(--stone);
+    line-height:1.7;
+  }
+  @media (max-width:640px){ .hero-tag-right{display:none;} }
+
+  .hero-content{
+    position:relative;
+    z-index:3;
+    padding-bottom:96px;
+  }
+  .hero h1{
+    font-family:'Bodoni Moda',serif;
+    font-weight:400;
+    font-size:clamp(2.6rem, 7.4vw, 6rem);
+    line-height:1.02;
+    max-width:13ch;
+  }
+  .hero h1 em{color:var(--bronze);font-style:italic;font-weight:500;}
+  .hero-foot{
+    margin-top:26px;
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-end;
+    flex-wrap:wrap;
+    gap:20px;
+    border-top:1px solid var(--line);
+    padding-top:18px;
+  }
+  .hero-desc{max-width:38ch;font-size:0.95rem;line-height:1.6;color:var(--stone);}
+  .scroll-cue{
+    display:flex;align-items:center;gap:10px;
+    font-size:0.68rem;letter-spacing:0.12em;text-transform:uppercase;
+    color:var(--stone);white-space:nowrap;
+  }
+  .scroll-cue::before{content:"";width:22px;height:1px;background:var(--bronze);animation:pulse 2.2s ease-in-out infinite;}
+  @keyframes pulse{0%,100%{opacity:.35;width:22px;}50%{opacity:1;width:34px;}}
+
+  /* ============ STATEMENT SPREAD ============ */
+  .spread{
+    position:relative;
+    height:80vh;
+    min-height:480px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    overflow:hidden;
+  }
+  .spread-bg{
+    position:absolute;inset:0;
+    background:
+      linear-gradient(rgba(10,10,9,0.68), rgba(10,10,9,0.68)),
+      repeating-linear-gradient(90deg, rgba(190,154,101,0.05) 0 2px, transparent 2px 64px);
+  }
+  .spread p{
+    position:relative;z-index:2;
+    font-family:'Bodoni Moda',serif;
+    font-style:italic;
+    font-weight:400;
+    font-size:clamp(1.7rem, 4.6vw, 3.4rem);
+    line-height:1.3;
+    text-align:center;
+    max-width:20ch;
+    color:var(--ivory);
+    padding:0 20px;
+  }
+  .spread span{
+    position:relative;z-index:2;
+    margin-top:22px;
+    font-family:'Inter';
+    font-size:0.72rem;
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    color:var(--bronze);
+  }
+
+  /* ============ STATS ============ */
+  .stats{
+    border-top:1px solid var(--line);
+    border-bottom:1px solid var(--line);
+    padding:70px 0;
+  }
+  .stats-row{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:24px;
+  }
+  @media (max-width:760px){ .stats-row{grid-template-columns:repeat(2,1fr);} }
+  .stat .num{
+    font-family:'Bodoni Moda',serif;
+    font-size:clamp(2.2rem,5vw,3.6rem);
+    color:var(--bronze);
+    line-height:1;
+  }
+  .stat .lbl{
+    margin-top:10px;
+    font-size:0.7rem;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    color:var(--stone);
+  }
+
+  /* ============ PROJECT SPREADS (full-bleed) ============ */
+  .proj{
+    position:relative;
+    height:100vh;
+    min-height:560px;
+    display:flex;
+    align-items:flex-end;
+    overflow:hidden;
+    border-bottom:1px solid var(--line);
+  }
+  .proj-bg{position:absolute;inset:0;}
+  .proj-bg svg{position:absolute;inset:0;width:100%;height:100%;}
+  .proj-fade{
+    position:absolute;inset:0;
+    background:linear-gradient(180deg, rgba(10,10,9,0.1) 0%, rgba(10,10,9,0.35) 55%, rgba(10,10,9,0.92) 100%);
+  }
+  .proj-inner{
+    position:relative;z-index:2;
+    width:100%;
+    padding-bottom:56px;
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-end;
+    flex-wrap:wrap;
+    gap:20px;
+  }
+  .proj-title{
+    font-family:'Bodoni Moda',serif;
+    font-weight:400;
+    font-size:clamp(2rem,6vw,4.4rem);
+    line-height:1.02;
+    max-width:14ch;
+  }
+  .proj-meta{
+    text-align:right;
+    font-size:0.76rem;
+    letter-spacing:0.05em;
+    color:var(--stone);
+    line-height:1.9;
+  }
+  .proj-meta strong{color:var(--bronze);font-weight:500;}
+  .proj-num{
+    position:absolute;
+    top:100px;
+    left:clamp(22px,4vw,64px);
+    z-index:2;
+    font-family:'Bodoni Moda',serif;
+    font-style:italic;
+    font-size:1rem;
+    color:var(--stone);
+  }
+
+  /* ============ INDEX LIST (remaining works) ============ */
+  .indexlist{padding:90px 0;}
+  .il-row{
+    display:grid;
+    grid-template-columns:60px 1fr auto;
+    gap:20px;
+    align-items:center;
+    padding:22px 0;
+    border-top:1px solid var(--line);
+    transition:padding-left .25s, background .25s;
+  }
+  .il-row:last-child{border-bottom:1px solid var(--line);}
+  .il-row:hover{background:var(--panel);padding-left:10px;}
+  .il-row .n{font-family:'Bodoni Moda',serif;font-style:italic;color:var(--bronze);font-size:0.95rem;}
+  .il-row h4{font-family:'Bodoni Moda',serif;font-weight:400;font-size:1.25rem;}
+  .il-row .loc{font-size:0.76rem;color:var(--stone);text-align:right;white-space:nowrap;}
+
+  /* ============ GALLERY ============ */
+  .gallery{padding-bottom:100px;}
+  .gal-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:14px;
+  }
+  @media (max-width:900px){ .gal-grid{grid-template-columns:repeat(2,1fr);} }
+  .gal-tile{
+    position:relative;
+    aspect-ratio:3/4;
+    overflow:hidden;
+    background:var(--panel);
+  }
+  .gal-tile:nth-child(2n){aspect-ratio:3/4;margin-top:36px;}
+  @media (max-width:900px){ .gal-tile:nth-child(2n){margin-top:0;} }
+  .gal-tile svg{position:absolute;inset:0;width:100%;height:100%;transition:transform .6s ease;}
+  .gal-tile:hover svg{transform:scale(1.06);}
+  .gal-label{
+    position:absolute;left:0;right:0;bottom:0;
+    padding:16px;
+    background:linear-gradient(0deg, rgba(10,10,9,0.85), transparent);
+    font-size:0.68rem;
+    letter-spacing:0.06em;
+    text-transform:uppercase;
+    color:var(--ivory);
+    opacity:0;
+    transition:opacity .3s;
+  }
+  .gal-tile:hover .gal-label{opacity:1;}
+
+  /* ============ ABOUT ============ */
+  .about{
+    padding:110px 0;
+    border-top:1px solid var(--line);
+    display:grid;
+    grid-template-columns:1fr 1.25fr;
+    gap:60px;
+  }
+  @media (max-width:820px){ .about{grid-template-columns:1fr;gap:36px;} }
+  .about-quote{
+    font-family:'Bodoni Moda',serif;
+    font-style:italic;
+    font-size:clamp(1.5rem,2.8vw,2.1rem);
+    line-height:1.35;
+    color:var(--bronze);
+  }
+  .about-body p{
+    font-size:0.96rem;
+    line-height:1.8;
+    color:var(--stone);
+    max-width:58ch;
+    margin-bottom:18px;
+  }
+  .about-body strong{color:var(--ivory);font-weight:500;}
+
+  /* ============ FOOTER ============ */
+  footer{
+    border-top:1px solid var(--line);
+    padding:90px 0 30px;
+    background:var(--panel);
+  }
+  .foot-grid{
+    display:grid;
+    grid-template-columns:1.4fr 1fr 1fr;
+    gap:40px;
+    padding-bottom:60px;
+  }
+  @media (max-width:820px){ .foot-grid{grid-template-columns:1fr;gap:36px;} }
+  .foot-cta{
+    font-family:'Bodoni Moda',serif;
+    font-size:clamp(1.8rem,4vw,2.8rem);
+    line-height:1.15;
+    margin-bottom:20px;
+  }
+  .foot-cta a{border-bottom:1px solid var(--bronze);color:var(--bronze);}
+  .foot-cta a:hover{opacity:0.7;}
+  .foot-col h5{
+    font-size:0.68rem;letter-spacing:0.12em;text-transform:uppercase;
+    color:var(--stone);margin-bottom:16px;
+  }
+  .foot-col a, .foot-col p{
+    display:block;
+    font-size:0.86rem;
+    color:var(--ivory);
+    margin-bottom:10px;
+    line-height:1.6;
+  }
+  .foot-col a:hover{color:var(--bronze);}
+  .foot-bottom{
+    display:flex;justify-content:space-between;flex-wrap:wrap;gap:14px;
+    padding-top:24px;border-top:1px solid var(--line);
+    font-size:0.74rem;color:var(--stone);
+  }
+
+  .reveal{opacity:0;transform:translateY(22px);transition:opacity .8s ease, transform .8s ease;}
+  .reveal.in{opacity:1;transform:translateY(0);}
+
+  @media (prefers-reduced-motion: reduce){
+    *{animation:none !important;transition:none !important;}
+    .reveal{opacity:1;transform:none;}
+  }
+  :focus-visible{outline:2px solid var(--bronze);outline-offset:3px;}
+</style>
+</head>
+<body>
+
+<header id="siteHeader">
+  <div class="navrow">
+    <span class="logo">MD Mojammel Khan Paris</span>
+    <nav class="navlinks">
+      <a href="#work">Work</a>
+      <a href="#gallery">Gallery</a>
+      <a href="#about">Practice</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<!-- ============ HERO ============ -->
+<section class="hero">
+  <div class="hero-bg">
+    <svg viewBox="0 0 1600 500" preserveAspectRatio="none" id="skyline">
+      <!-- skyline silhouette -->
+      <rect x="0" y="260" width="120" height="240" fill="#0F0E0C"/>
+      <rect x="130" y="180" width="90" height="320" fill="#0F0E0C"/>
+      <rect x="230" y="300" width="140" height="200" fill="#121110"/>
+      <rect x="380" y="120" width="70" height="380" fill="#0F0E0C"/>
+      <rect x="460" y="220" width="160" height="280" fill="#121110"/>
+      <rect x="630" y="60" width="100" height="440" fill="#0D0C0B"/>
+      <rect x="740" y="240" width="120" height="260" fill="#121110"/>
+      <rect x="870" y="150" width="80" height="350" fill="#0F0E0C"/>
+      <rect x="960" y="280" width="180" height="220" fill="#121110"/>
+      <rect x="1150" y="100" width="90" height="400" fill="#0D0C0B"/>
+      <rect x="1250" y="260" width="130" height="240" fill="#0F0E0C"/>
+      <rect x="1390" y="200" width="100" height="300" fill="#121110"/>
+      <rect x="1500" y="320" width="100" height="180" fill="#0F0E0C"/>
+      <g id="windows" fill="#BE9A65"></g>
+    </svg>
+  </div>
+  <div class="hero-vignette"></div>
+
+  <div class="hero-tag-top">
+    Graduating
+    <strong>2026</strong>
+  </div>
+  <div class="hero-tag-right">
+    GSTU · B.Arch<br>M.Arch Candidate
+  </div>
+
+  <div class="wrap hero-content">
+    <h1>The city,<br>redrawn <em>one</em><br>elevation at a time.</h1>
+    <div class="hero-foot">
+      <p class="hero-desc">A student practice working across academic and civic design — grounded in daylight, material honesty, and the conditions already on site.</p>
+      <div class="scroll-cue">Scroll to explore</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ STATEMENT ============ -->
+<section class="spread reveal">
+  <div class="spread-bg"></div>
+  <div style="display:flex;flex-direction:column;align-items:center;">
+    <p>"Every site already knows what it wants to become — the work is listening closely enough to draw it."</p>
+    <span>MD Mojammel Khan Paris, B.Arch Candidate</span>
+  </div>
+</section>
+
+<!-- ============ STATS ============ -->
+<section class="wrap stats">
+  <div class="stats-row">
+    <div class="stat reveal"><div class="num">B.Arch</div><div class="lbl">Program, GSTU</div></div>
+    <div class="stat reveal"><div class="num">6</div><div class="lbl">Academic projects</div></div>
+    <div class="stat reveal"><div class="num">2026</div><div class="lbl">Expected graduation</div></div>
+    <div class="stat reveal"><div class="num">M.Arch</div><div class="lbl">Candidate</div></div>
+  </div>
+</section>
+
+<!-- ============ SELECTED WORK — FULL SPREADS ============ -->
+<div id="work">
+
+<section class="proj">
+  <div class="proj-num">01</div>
+  <div class="proj-bg">
+    <!-- Place "a_2 - Photo (1).jpg" in the same folder as this HTML file -->
+    <img src="a_2 - Photo (1).jpg" alt="Design of an Elementary School in Gopalganj" style="width:100%;height:100%;object-fit:cover;">
+  </div>
+  <div class="proj-fade"></div>
+  <div class="wrap proj-inner">
+    <h3 class="proj-title">Design of an<br>Elementary School<br>in Gopalganj</h3>
+    <div class="proj-meta">Academic — Civic<br>Gopalganj, Bangladesh<br><strong>Thesis Project</strong></div>
+  </div>
+</section>
+
+<section class="proj">
+  <div class="proj-num">02</div>
+  <div class="proj-bg">
+    <svg viewBox="0 0 800 600" preserveAspectRatio="xMidYMid slice">
+      <rect width="800" height="600" fill="#161311"/>
+      <g stroke="#3A342A" stroke-width="1.5" fill="none">
+        <polygon points="60,540 400,120 740,540"/>
+        <line x1="60" y1="540" x2="740" y2="540"/>
+        <line x1="180" y1="420" x2="620" y2="420"/>
+        <line x1="240" y1="330" x2="560" y2="330"/>
+        <line x1="310" y1="240" x2="490" y2="240"/>
+      </g>
+    </svg>
+  </div>
+  <div class="proj-fade"></div>
+  <div class="wrap proj-inner">
+    <h3 class="proj-title">Kettner<br>Studios</h3>
+    <div class="proj-meta">Adaptive Reuse — Mixed-Use<br>Chicago, Illinois<br><strong>2023</strong></div>
+  </div>
+</section>
+
+<section class="proj">
+  <div class="proj-num">03</div>
+  <div class="proj-bg">
+    <svg viewBox="0 0 800 600" preserveAspectRatio="xMidYMid slice">
+      <rect width="800" height="600" fill="#141210"/>
+      <g stroke="#3A342A" stroke-width="1.5" fill="none">
+        <rect x="180" y="180" width="440" height="300"/>
+        <circle cx="400" cy="330" r="120"/>
+        <line x1="180" y1="330" x2="620" y2="330"/>
+        <line x1="400" y1="180" x2="400" y2="480"/>
+      </g>
+    </svg>
+  </div>
+  <div class="proj-fade"></div>
+  <div class="wrap proj-inner">
+    <h3 class="proj-title">Marrow<br>Chapel</h3>
+    <div class="proj-meta">Civic — Timber<br>Driftless Region, Wisconsin<br><strong>2022</strong></div>
+  </div>
+</section>
+
+</div>
+
+<!-- ============ REMAINING WORKS — INDEX LIST ============ -->
+<section class="wrap indexlist">
+  <p class="eyebrow reveal" style="margin-bottom:24px;">Further work</p>
+
+  <div class="il-row reveal">
+    <span class="n">04</span>
+    <h4>Pier Street Infill</h4>
+    <span class="loc">Milwaukee, WI — In Construction</span>
+  </div>
+  <div class="il-row reveal">
+    <span class="n">05</span>
+    <h4>Halvard Library Annex</h4>
+    <span class="loc">Rockford, IL — 2021</span>
+  </div>
+  <div class="il-row reveal">
+    <span class="n">06</span>
+    <h4>Founders Yard Pavilion</h4>
+    <span class="loc">Detroit, MI — In Design</span>
+  </div>
+</section>
+
+<!-- ============ GALLERY ============ -->
+<section class="wrap gallery" id="gallery">
+  <div class="eyebrow reveal" style="margin-bottom:24px;">Gallery — details &amp; studies</div>
+  <div class="gal-grid">
+
+    <div class="gal-tile reveal">
+      <svg viewBox="0 0 300 400"><rect width="300" height="400" fill="#151310"/>
+        <g stroke="#4A4030" stroke-width="1" fill="none">
+          <line x1="0" y1="80" x2="300" y2="80"/><line x1="0" y1="160" x2="300" y2="160"/>
+          <line x1="0" y1="240" x2="300" y2="240"/><line x1="0" y1="320" x2="300" y2="320"/>
+          <line x1="75" y1="0" x2="75" y2="400"/><line x1="150" y1="0" x2="150" y2="400"/><line x1="225" y1="0" x2="225" y2="400"/>
+        </g></svg>
+      <div class="gal-label">Facade Study — 01</div>
+    </div>
+
+    <div class="gal-tile reveal">
+      <svg viewBox="0 0 300 400"><rect width="300" height="400" fill="#171410"/>
+        <g stroke="#4A4030" stroke-width="1" fill="none">
+          <rect x="40" y="40" width="220" height="320"/>
+          <line x1="40" y1="150" x2="260" y2="150"/><line x1="40" y1="260" x2="260" y2="260"/>
+        </g></svg>
+      <div class="gal-label">Section — Marrow Chapel</div>
+    </div>
+
+    <div class="gal-tile reveal">
+      <svg viewBox="0 0 300 400"><rect width="300" height="400" fill="#151310"/>
+        <g stroke="#4A4030" stroke-width="1" fill="none">
+          <polygon points="30,370 150,60 270,370"/>
+          <line x1="80" y1="260" x2="220" y2="260"/>
+        </g></svg>
+      <div class="gal-label">Roof Study — 03</div>
+    </div>
+
+    <div class="gal-tile reveal">
+      <svg viewBox="0 0 300 400"><rect width="300" height="400" fill="#171410"/>
+        <g stroke="#4A4030" stroke-width="1" fill="none">
+          <rect x="30" y="30" width="240" height="340"/>
+          <line x1="30" y1="120" x2="270" y2="120"/>
+          <line x1="30" y1="210" x2="270" y2="210"/>
+          <line x1="30" y1="300" x2="270" y2="300"/>
+          <line x1="150" y1="30" x2="150" y2="370"/>
+        </g></svg>
+      <div class="gal-label">Plan Diagram — Ashgrove</div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ============ ABOUT ============ -->
+<section class="wrap about" id="about">
+  <div class="reveal">
+    <p class="eyebrow" style="margin-bottom:18px;">The practice</p>
+    <p class="about-quote">"A building should earn its keep twice — once for the people who commission it, and once for the people who inherit it."</p>
+  </div>
+  <div class="about-body reveal">
+    <p>MD Mojammel Khan Paris is a <strong>B.Arch student at GSTU</strong>, expecting to graduate in <strong>2026</strong>, and an incoming <strong>M.Arch candidate</strong>. This portfolio collects academic and thesis work developed across the program.</p>
+    <p>The work here is grounded in daylight, material honesty, and the conditions already present on site — with a particular interest in civic and educational architecture, including the elementary school design in Gopalganj featured above.</p>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer id="contact">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <p class="foot-cta">Have a project<br>in mind?<br><a href="mailto:hello@example.com">Let's talk.</a></p>
+      </div>
+      <div class="foot-col">
+        <h5>Navigate</h5>
+        <a href="#work">Work</a>
+        <a href="#gallery">Gallery</a>
+        <a href="#about">Practice</a>
+        <a href="#contact">Contact</a>
+      </div>
+      <div class="foot-col">
+        <h5>Contact</h5>
+        <p>Gopalganj, Bangladesh</p>
+        <a href="mailto:hello@example.com">hello@example.com</a>
+        <a href="#">Instagram ⬎</a>
+        <a href="#">LinkedIn ⬎</a>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 MD Mojammel Khan Paris</span>
+      <span>All rights reserved</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // header solidify on scroll
+  const header = document.getElementById('siteHeader');
+  window.addEventListener('scroll', () => {
+    header.classList.toggle('solid', window.scrollY > 40);
+  });
+
+  // ambient lit windows in skyline
+  const windows = document.getElementById('windows');
+  const buildings = [
+    [0,260,120,240],[130,180,90,320],[230,300,140,200],[380,120,70,380],
+    [460,220,160,280],[630,60,100,440],[740,240,120,260],[870,150,80,350],
+    [960,280,180,220],[1150,100,90,400],[1250,260,130,240],[1390,200,100,300],[1500,320,100,180]
+  ];
+  const rects = [];
+  buildings.forEach(([bx,by,bw,bh])=>{
+    const cols = Math.max(2, Math.floor(bw/22));
+    const rows = Math.max(3, Math.floor(bh/28));
+    for(let c=0;c<cols;c++){
+      for(let r=0;r<rows;r++){
+        if(Math.random() > 0.72){
+          const wx = bx + 8 + c*(bw-16)/cols;
+          const wy = by + 14 + r*(bh-28)/rows;
+          const rect = document.createElementNS("http://www.w3.org/2000/svg","rect");
+          rect.setAttribute("x", wx.toFixed(1));
+          rect.setAttribute("y", wy.toFixed(1));
+          rect.setAttribute("width", 5);
+          rect.setAttribute("height", 8);
+          rect.setAttribute("opacity", (0.15 + Math.random()*0.55).toFixed(2));
+          windows.appendChild(rect);
+          rects.push(rect);
+        }
+      }
+    }
+  });
+  function flicker(){
+    if(rects.length){
+      const n = rects[Math.floor(Math.random()*rects.length)];
+      n.setAttribute("opacity", (0.15 + Math.random()*0.65).toFixed(2));
+    }
+  }
+  setInterval(flicker, 180);
+
+  // scroll reveal
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('in');
+        io.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+</script>
+
+</body>
+</html>
